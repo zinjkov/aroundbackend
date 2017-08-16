@@ -12,11 +12,8 @@ def index(request):
 
 def login(request):
     if request.method == 'POST':
-        print(request.POST)
         username = request.POST['username']
         password = request.POST['pwd']
-        print(username)
-        print(password)
         user = auth.authenticate(username=username, password=password)
         if user is not None and user.is_active:
             auth.login(request, user)
