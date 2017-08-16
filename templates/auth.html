@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <form action="{% url 'login' %}" method="post" >
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input name="username" type="text" class="form-control" id="username">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input name="pwd" type="password" class="form-control" id="pwd">
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    {% if error %}
+    <div class="alert alert-danger">
+        <strong>Danger!</strong> {{ error }}
+    </div>
+    {% endif %}
+</div>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
