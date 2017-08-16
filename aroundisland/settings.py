@@ -25,7 +25,7 @@ SECRET_KEY = '@fr=wg!$4u))(q^-%^-uxzfa93%7&mtuku=*%(x6h+j*3j6=5='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['aroundisland.ru', 'localhost']
+ALLOWED_HOSTS = ['aroundisland.ru', 'localhost', '127.0.0.1']
 
 
 # Application definition
