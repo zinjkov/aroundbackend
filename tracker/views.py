@@ -10,6 +10,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 def index(request):
     return render(request, 'index.html')
 
+
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -20,7 +21,4 @@ def login(request):
             return HttpResponseRedirect("/")
         else:
             return render(request, 'auth.html', {'error': 'wrong password or username'})
-    context = {
-
-    }
-    return render(request, 'auth.html', context)
+    return render(request, 'auth.html')
