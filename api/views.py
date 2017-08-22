@@ -20,6 +20,8 @@ def get_client_ip(request):
 
 
 def upload_image_handle(imginb64):
+    if imginb64 == '0':
+        return 'media/board/#'
     b = base64.b64decode(imginb64.encode('utf-8'))
     path = 'media/board/' + str(datetime.now()).\
         replace(':', '_').replace('.', '_').\
@@ -31,7 +33,7 @@ def upload_image_handle(imginb64):
 
 def post_board_info(request):
     try:
-        payload = json.loads(request.body.decode('utf-8'))
+        payload = json.loads(request.body.decode('utf-8'))['data']
         info = trModels.BoardInfo()
         info.id_path = trModels.Path.objects.latest('id')
         info.image = upload_image_handle(payload['image'])
@@ -50,6 +52,7 @@ def post_board_info(request):
         info.save()
         return JsonResponse({'status': 'ok'}, status=201)
     except:
+        print(request.body)
         traceback.print_exc()
         return JsonResponse({'status': 'false'}, status=500)
 
