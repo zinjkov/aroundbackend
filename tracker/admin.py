@@ -25,3 +25,8 @@ class CommandJSONAdmin(admin.ModelAdmin):
 @admin.register(models.Team)
 class TeamAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(models.Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    pass

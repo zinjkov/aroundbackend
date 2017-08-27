@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'board/commands', views.get_commandJSON),
     url(r'board/count', views.get_count),
     url(r'team/list', views.get_team_list),
+    url(r'gallery/list', views.get_gallery_list),
+    url(r'gallery/photo/list', views.get_photo_list),
 
     url(r'test_models', views.test_models)
 ]
