@@ -154,5 +154,4 @@ def get_photo_list(request):
     response = {
          "data": data
     }
-
     return JsonResponse(response)
