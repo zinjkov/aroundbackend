@@ -63,3 +63,14 @@ class Team(models.Model):
     class Meta:
         verbose_name = "Член команды"
         verbose_name_plural = "Команда"
+
+
+class Gallery(models.Model):
+    name = models.CharField(blank=True, null=True, max_length=255)
+    path = models.CharField(blank=True, null=True, max_length=255)
+    cover = models.CharField(blank=True, null=True, max_length=255)
+    created_at = models.DateTimeField(auto_now=True, null=True)
+
+    class Meta:
+        verbose_name = "Альбомы"
+        verbose_name_plural = "Альбом"

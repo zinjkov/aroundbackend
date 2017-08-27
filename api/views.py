@@ -1,5 +1,5 @@
 import traceback
-
+import os
 from django.http import JsonResponse
 from tracker import models as trModels
 from datetime import datetime
@@ -135,4 +135,24 @@ def get_team_list(request):
     response = {
         "data": list(trModels.Team.objects.values())
     }
+    return JsonResponse(response)
+
+
+def get_gallery_list(request):
+    response = {
+        "data": list(trModels.Gallery.objects.values('id', 'cover', 'name'))
+    }
+    return JsonResponse(response)
+
+
+def get_photo_list(request):
+    id = int(request.GET['id'])
+    path = trModels.Gallery.objects.get(id=id).path
+    dirpath = os.getcwd() + '/' + path
+    photolist = os.listdir(dirpath)
+    data = [path + photo for photo in photolist]
+    response = {
+         "data": data
+    }
+
     return JsonResponse(response)
