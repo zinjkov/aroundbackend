@@ -174,7 +174,7 @@ def post_waypoints(request):
         payload = json.loads(request.body)
     except:
         return JsonResponse({'data': 'error'})
-
+    trModels.Waypoint.objects.all().delete()
     for item in payload['path']:
         command = trModels.Waypoint()
         command.longitude = item['lng']
