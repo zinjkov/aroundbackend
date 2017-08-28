@@ -155,3 +155,44 @@ def get_photo_list(request):
          "data": data
     }
     return JsonResponse(response)
+
+
+def get_waypoints_without(request):
+    data = trModels.Waypoint.objects
+    obj = data.values('longitude', 'latitude').all()
+    obj = list(obj)
+    obj = [{'lng': item['longitude'], 'lat':item['latitude']} for item in obj]
+    response = {
+        "data": list(obj)
+    }
+
+    return JsonResponse(response)
+
+
+def post_waypoints(request):
+    try:
+        payload = json.loads(request.body)
+    except:
+        return JsonResponse({'data': 'error'})
+
+    for item in payload['path']:
+        command = trModels.Waypoint()
+        command.longitude = item['lng']
+        command.latitude = item['lat']
+        command.save()
+
+    respounse = {
+        "data": "success"
+    }
+
+    return JsonResponse(respounse)
+
+
+def update_waypoints(request):
+    trModels.Waypoint.objects.select_for_update().update(sended=False)
+    return JsonResponse({'status': 'ok'})
+
+
+def delete_waypoints(request):
+    trModels.Waypoint.objects.all().delete()
+    return JsonResponse({'status': 'ok'})
