@@ -1,0 +1,10 @@
+*.iml
+.idea/inspectionProfiles/profiles_settings.xml
+*.xml
+.idea/workspace.xml
+*.ini
+uwsgi_params
+media/board/2017_08_18 13_20_04_224573.jpg
+*.conf
+*.xml
+*.pyc
