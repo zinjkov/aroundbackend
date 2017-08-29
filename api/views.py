@@ -171,9 +171,9 @@ def get_waypoints_without(request):
 
 def post_waypoints(request):
     try:
-        payload = json.loads(request.body)
+        payload = json.loads(request.body.decode('utf-8'))
     except:
-        return JsonResponse({'data': 'error'})
+        return JsonResponse({'data': 'error'}, status=500)
     trModels.Waypoint.objects.all().delete()
     for item in payload['path']:
         command = trModels.Waypoint()
@@ -185,7 +185,7 @@ def post_waypoints(request):
         "data": "success"
     }
 
-    return JsonResponse(respounse)
+    return JsonResponse(respounse, status=201)
 
 
 def update_waypoints(request):
