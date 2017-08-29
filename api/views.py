@@ -197,3 +197,12 @@ def update_waypoints(request):
 def delete_waypoints(request):
     trModels.Waypoint.objects.all().delete()
     return JsonResponse({'status': 'ok'})
+
+
+def get_info_board_last_path(request):
+    last_path = trModels.Path.objects.order_by('-id')[:1]
+    obj = trModels.BoardInfo.objects.values().filter(id_path=last_path)
+    response = {
+        "data": list(obj)
+    }
+    return JsonResponse(response)
