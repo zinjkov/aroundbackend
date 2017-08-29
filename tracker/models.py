@@ -7,6 +7,12 @@ class Path(models.Model):
     name = models.CharField(blank=True, null=True, max_length=255)
     created_at = models.DateTimeField(auto_now=True, null=True)
 
+    def __unicode__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = "Путь"
         verbose_name_plural = "Пути"
@@ -29,6 +35,11 @@ class BoardInfo(models.Model):
     id_path = models.ForeignKey(Path, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True, null=True)
 
+    def __unicode__(self):
+        return self.id_path
+
+    def __str__(self):
+        return self.id_path
     class Meta:
         verbose_name = "информация с лодкки"
         verbose_name_plural = "информация с лодкки"
@@ -39,6 +50,12 @@ class Waypoint(models.Model):
     latitude = models.FloatField()
     sended = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now=True, null=True)
+
+    def __unicode__(self):
+        return self.sended
+
+    def __str__(self):
+        return self.sended
 
     class Meta:
         verbose_name = "Waypoint"
@@ -60,6 +77,12 @@ class Team(models.Model):
     avatar = models.CharField(max_length=255)
     description = models.TextField()
 
+    def __unicode__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = "Член команды"
         verbose_name_plural = "Команда"
@@ -70,6 +93,12 @@ class Gallery(models.Model):
     path = models.CharField(blank=True, null=True, max_length=255)
     cover = models.CharField(blank=True, null=True, max_length=255)
     created_at = models.DateTimeField(auto_now=True, null=True)
+
+    def __unicode__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "Альбомы"
