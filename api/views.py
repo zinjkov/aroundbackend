@@ -210,8 +210,8 @@ def get_info_board_last_path(request):
 
 
 def confirm_get_waypoints(request):
-    payload = json.loads(request.body.decode('utf-8'))['status']
-    if payload == 'ok':
+
+    if request.GET['status'] == 'ok':
         data = trModels.Waypoint.objects.select_for_update().filter(sended=False)
         data.update(sended=True)
         return JsonResponse({'status': 'ok'})
