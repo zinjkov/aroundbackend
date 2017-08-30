@@ -57,9 +57,9 @@ def post_board_info(request):
         return JsonResponse({'status': 'false'}, status=500)
 
 def get_info_list(request):
-    # last_path = trModels.Path.objects.filter(name='tetstscryplev').get()
+    last_path = trModels.Path.objects.filter(name='tetstscryplev').get()
     # print(last_path)
-    last_path = trModels.Path.objects.order_by('-id')[:1]
+    # last_path = trModels.Path.objects.order_by('-id')[:1]
     obj = trModels.BoardInfo.objects.values().filter(id_path=last_path)
     response = {
         "data": list(obj)
