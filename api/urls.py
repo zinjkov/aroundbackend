@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'waypoints/delete/', views.delete_waypoints),
     url(r'board/latest_path', views.get_info_board_last_path),
     url(r'board/confirm', views.confirm_get_waypoints),
+    url(r'path/get', views.get_path_list),
 
     url(r'test_models', views.test_models)
 ]

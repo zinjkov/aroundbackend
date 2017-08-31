@@ -36,10 +36,10 @@ class BoardInfo(models.Model):
     created_at = models.DateTimeField(auto_now=True, null=True)
 
     def __unicode__(self):
-        return self.id_path
+        return str(self.id_path)
 
     def __str__(self):
-        return self.id_path
+        return str(self.id_path)
     class Meta:
         verbose_name = "информация с лодкки"
         verbose_name_plural = "информация с лодкки"
@@ -52,10 +52,10 @@ class Waypoint(models.Model):
     created_at = models.DateTimeField(auto_now=True, null=True)
 
     def __unicode__(self):
-        return self.sended
+        return str(self.sended)
 
     def __str__(self):
-        return self.sended
+        return str(self.sended)
 
     class Meta:
         verbose_name = "Waypoint"
