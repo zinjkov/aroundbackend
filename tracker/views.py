@@ -21,3 +21,7 @@ def login(request):
         else:
             return render(request, 'auth.html', {'error': 'wrong password or username'})
     return render(request, 'auth.html')
+
+
+def logic(request):
+    return render(request, 'logic.html')

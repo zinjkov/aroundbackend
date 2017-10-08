@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', trackerViews.index, name="index"),
     url(r'^accounts/login/$', trackerViews.login, name="login"),
+    url(r'^logic/form/$', trackerViews.logic, name="login"),
 
     url(r'^api/', include('api.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
