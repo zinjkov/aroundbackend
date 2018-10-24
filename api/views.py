@@ -36,32 +36,24 @@ def post_board_info(request):
         u = (request.body.decode('utf-8'))
         payload = json.loads(u)['data']
         info = trModels.BoardInfo()
-        print("payload", payload)
         info.id_path = trModels.Path.objects.latest('id')
-# # #        info.image = upload_image_handle(payload['image'])
         info.latitude_gps = payload['latitude_gps']
         info.longitude_gps = payload['longitude_gps']
         info.altitude_gps = payload['altitude_gps']
         info.yaw_gps = payload['yaw_gps']
-# # #        info.yaw_compass = payload['yaw_compass']
         info.ip_client = get_client_ip(request)
-# # #        info.latitude_point = payload['latitude_point']
-# # #        info.longitude_point = payload['longitude_point']
-# # #        info.hdop_gps = payload['hdop_gps']
+        info.hdop_gps = payload['hdop_gps']
         info.satellites_gps = payload['satellites_gps']
         info.speed_gps = payload['speed_gps']
-# #        info.vcc = payload['vcc']
         info.save()
-         # return JsonResponse({'status': 'ok'}, status=201)
     except:
         print(request.body)
         traceback.print_exc()
-        return JsonResponse({'status': 'false'}, status=500)
+        return JsonResponse({'status': 'error'}, status=500)
     return JsonResponse({'status': 'ok'}, status=201)
 
+
 def get_info_list(request):
-    # last_path = trModels.Path.objects.filter(name='tetstscryplev').get()
-    # print(last_path)
     last_path = trModels.Path.objects.order_by('-id')[:1]
     obj = trModels.BoardInfo.objects.values().filter(id_path=last_path)
     response = {
